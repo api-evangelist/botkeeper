@@ -1,0 +1,81 @@
+generated: '2026-08-08'
+method: searched
+source: https://zapier.com/apps/botkeeper/integrations
+name: Botkeeper on Zapier
+description: >-
+  Botkeeper's first-party Zapier app is the only public, callable projection of
+  the Botkeeper API. Because Botkeeper publishes no developer portal, no
+  reference and no OpenAPI, this listing is the closest thing to a public
+  operation catalogue the company has. Captured verbatim from the Zapier
+  directory page — names and descriptions only; no request or response schemas
+  are published, and none are inferred here.
+
+platform: zapier
+url: https://zapier.com/apps/botkeeper/integrations
+first_party: true
+beta: false
+premium: false
+
+surface:
+  triggers: 2
+  actions: 3
+  searches: 3
+  total: 8
+
+triggers:
+  - name: Document Uploaded
+    description: Triggers when a new document is uploaded
+    likely_api: Bookkeeping API / Documents
+  - name: Task Created or Updated
+    description: Triggers when a new task is created or updated
+    likely_api: Tasks API
+
+actions:
+  - name: Create a Client
+    description: Creates a new Client
+    kind: write
+    likely_api: Bookkeeping API
+  - name: Create a Custom Task
+    description: Creates a Custom Task
+    kind: write
+    likely_api: Tasks API
+  - name: Invite a User
+    description: Invites a User to a Client
+    kind: write
+    likely_api: User API
+
+searches:
+  - name: Find Client
+    description: Finds a client by name
+    kind: search
+    likely_api: Bookkeeping API
+  - name: Find Task
+    description: Finds a Task based on the Provided Criteria
+    kind: search
+    likely_api: Tasks API
+  - name: Find User
+    description: Finds a user by name or email address
+    kind: search
+    likely_api: User API
+
+correlation:
+  note: >-
+    The three API groupings implied by this app — clients/documents, tasks, users
+    — line up exactly with the three API components Botkeeper publishes on its
+    own status page (Bookkeeping API, Tasks API, User API). The `likely_api`
+    fields above are that correlation, marked as such; they are not asserted by
+    Botkeeper.
+  status_page: https://status.botkeeper.com/
+
+not_captured:
+  - Input and output field schemas (Zapier renders them only inside the editor, behind a login)
+  - Authentication mechanism for the Zapier connection
+  - Whether the triggers are REST hooks or polling
+  - Rate limits
+
+x-evidence:
+  fetched: '2026-08-08'
+  probes:
+    - url: https://zapier.com/apps/botkeeper/integrations
+      status: 200
+      content_type: text/html

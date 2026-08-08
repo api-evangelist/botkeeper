@@ -1,0 +1,74 @@
+generated: '2026-08-08'
+method: searched
+source: https://www.botkeeper.com/en/knowledge/botkeeper-platform-updates-and-roadmap
+name: Botkeeper platform release notes
+scheme:
+  type: dated
+  versioning: none — entries are dated product releases with no version numbers
+  cadence: irregular
+  scope: product / platform releases only; no API changelog is published
+hub: https://www.botkeeper.com/en/knowledge/botkeeper-platform-updates-and-roadmap
+also_at: https://www.botkeeper.com/blog (release round-up posts)
+
+entries:
+  - date: '2026-07-31'
+    title: July 31, 2026 Product Release
+    url: https://www.botkeeper.com/en/knowledge/july-2026-release
+    breaking: false
+    highlights:
+      - 'Client & User Management: redesigned onboarding wizard; resume incomplete client setups; real-time GL connection status'
+      - 'Client & User Management: self-serve licensing portal announced as coming soon'
+      - 'Auto Bank Rec: matching-modal performance optimization'
+      - 'Auto Bank Rec: fixed older transactions falsely flagged as unmatched'
+      - 'Transaction Manager: automation scheduling visibility; dynamic bulk actions'
+      - 'Transaction Manager: "Configurations" renamed to "AI Preferences"'
+      - 'Transaction Manager: QuickBooks Desktop export support'
+      - 'Transaction Manager: transaction lookback expanded from 60 days to 2 years'
+  - date: '2026-06-13'
+    title: June 2026 Releases
+    url: https://www.botkeeper.com/blog/june-2026-releases
+    breaking: false
+  - date: '2025-09-25'
+    title: September 25, 2025 Update
+    url: https://www.botkeeper.com/en/knowledge/botkeeper-platform-updates-and-roadmap
+    breaking: false
+  - date: '2025-08-28'
+    title: August 28, 2025 Update
+    url: https://www.botkeeper.com/en/knowledge/august-28-update-release-notes
+    breaking: false
+
+historical_index:
+  url: https://www.botkeeper.com/en/knowledge/what-are-the-most-recent-release-notes-for-bos
+  note: >-
+    A second knowledge-base article carries the older BOS (Botkeeper Operating
+    System) release history back to July 2022 — 14 dated entries, again with no
+    version numbers.
+
+gaps:
+  - >-
+    No API-level changelog: none of these entries describe API changes, added or
+    removed endpoints, or field-level breaking changes.
+  - >-
+    No machine-readable feed for the release notes (the only feeds Botkeeper
+    publishes are the marketing blog RSS and the Statuspage history RSS/Atom).
+  - No "breaking change" labelling convention.
+
+feeds:
+  - url: https://www.botkeeper.com/blog/rss.xml
+    status: 200
+    format: rss
+    note: marketing blog feed; carries release round-up posts but is not a changelog
+  - url: https://status.botkeeper.com/history.rss
+    status: 200
+    format: rss
+    note: incident history, not release notes
+
+x-evidence:
+  fetched: '2026-08-08'
+  probes:
+    - url: https://www.botkeeper.com/en/knowledge/botkeeper-platform-updates-and-roadmap
+      status: 200
+    - url: https://www.botkeeper.com/en/knowledge/july-2026-release
+      status: 200
+    - url: https://www.botkeeper.com/blog/rss.xml
+      status: 200

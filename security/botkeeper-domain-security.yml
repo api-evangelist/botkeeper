@@ -1,0 +1,28 @@
+generated: '2026-08-08'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: www.botkeeper.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 19 22:14:13 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+- host: status.botkeeper.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct 28 14:23:08 2026 GMT
+  hsts: true
+  hsts_max_age: 259200
+- host: ipa.botkeeper.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Jan 12 23:59:59 2027 GMT
+  hsts: null
+domains:
+- domain: botkeeper.com
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: quarantine

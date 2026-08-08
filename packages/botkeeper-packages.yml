@@ -1,0 +1,55 @@
+generated: '2026-08-08'
+method: searched
+source: registry search 2026-08-08
+name: Botkeeper client libraries and SDKs
+packages: []
+official_sdk_count: 0
+
+registries_searched:
+  - registry: npm
+    query: botkeeper
+    url: https://registry.npmjs.org/-/v1/search?text=botkeeper
+    result: no first-party package
+  - registry: PyPI
+    query: botkeeper
+    url: https://pypi.org/pypi/botkeeper/json
+    status: 404
+    result: no package
+  - registry: GitHub
+    org: https://github.com/botkeeper
+    status: 200
+    public_repos: 0
+    result: >-
+      The organization exists (id 83373852) but publishes zero public
+      repositories, so no source-available client library is discoverable.
+  - registry: Maven Central
+    result: not searched — no JVM surface indicated
+  - registry: NuGet
+    result: not searched — no .NET surface indicated
+  - registry: RubyGems / Packagist / crates.io / pkg.go.dev
+    result: not searched — no indication of any first-party library in any language
+
+third_party_connectors:
+  - name: Botkeeper on Zapier
+    url: https://zapier.com/apps/botkeeper/integrations
+    status: 200
+    first_party: true
+    note: >-
+      Botkeeper built and maintains this Zapier app. It is the only publicly
+      callable projection of the Botkeeper API. Not a package — catalogued in
+      integrations/botkeeper-zapier.yml.
+
+note: >-
+  Botkeeper ships no client library in any language. An integrator has no
+  installable artifact, no code samples, and no source to read. Recorded as an
+  honest zero — no SDKs pointer is emitted in apis.yml.
+
+x-evidence:
+  fetched: '2026-08-08'
+  probes:
+    - url: https://api.github.com/orgs/botkeeper/repos?per_page=100
+      status: 200
+    - url: https://pypi.org/pypi/botkeeper/json
+      status: 404
+    - url: https://registry.npmjs.org/-/v1/search?text=botkeeper&size=20
+      status: 200

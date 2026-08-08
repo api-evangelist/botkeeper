@@ -1,0 +1,97 @@
+generated: '2026-08-08'
+method: probed
+source: https://cognito-idp.us-east-1.amazonaws.com/us-east-1_MZqyuuurX/.well-known/openid-configuration
+name: Botkeeper authentication profile
+description: >-
+  Botkeeper publishes no developer authentication documentation. This profile is
+  assembled entirely from probed evidence: the OpenID Connect discovery document
+  for Botkeeper's production Amazon Cognito user pool, the published runtime
+  configuration of the Botkeeper Partner Portal SPA at https://www.firm.ai/, the
+  API Gateway challenge returned by ipa.botkeeper.com, and the Apollo GraphQL
+  challenge returned by api.firm.ai/graphql. Nothing here is inferred beyond what
+  those responses state.
+
+security_schemes:
+  - name: cognito_oidc
+    type: openIdConnect
+    openIdConnectUrl: https://cognito-idp.us-east-1.amazonaws.com/us-east-1_MZqyuuurX/.well-known/openid-configuration
+    provider: Amazon Cognito user pool (us-east-1)
+    issuer: https://cognito-idp.us-east-1.amazonaws.com/us-east-1_MZqyuuurX
+    custom_domain: https://login.auth.firm.ai
+    endpoints:
+      authorization: https://login.auth.firm.ai/oauth2/authorize
+      token: https://login.auth.firm.ai/oauth2/token
+      userinfo: https://login.auth.firm.ai/oauth2/userInfo
+      revocation: https://login.auth.firm.ai/oauth2/revoke
+      end_session: https://login.auth.firm.ai/logout
+      jwks: https://cognito-idp.us-east-1.amazonaws.com/us-east-1_MZqyuuurX/.well-known/jwks.json
+    response_types_supported: [code, token]
+    token_endpoint_auth_methods_supported: [client_secret_basic, client_secret_post]
+    id_token_signing_alg_values_supported: [RS256]
+    subject_types_supported: [public]
+    scopes_supported: [openid, email, phone, profile]
+    hosted_ui: https://botkeeper-prod.auth.us-east-1.amazoncognito.com
+    applies_to: Botkeeper Partner Portal (www.firm.ai / app.firm.ai)
+  - name: api_gateway_bearer
+    type: http
+    scheme: bearer
+    bearerFormat: JWT
+    host: ipa.botkeeper.com
+    evidence: >-
+      Every path on ipa.botkeeper.com returns HTTP 403
+      {"message":"Missing Authentication Token"} — the AWS API Gateway signature
+      for an unauthenticated request against an authorizer-protected API. The
+      Partner Portal SPA authenticates against the Cognito pool above and calls
+      this host, so the presented credential is a Cognito-issued JWT.
+    confidence: high
+    inferred: true
+  - name: graphql_session
+    type: session
+    host: api.firm.ai
+    endpoint: https://api.firm.ai/graphql
+    evidence: >-
+      POST returns {"errors":[{"message":"Must be logged in","extensions":
+      {"code":"UNAUTHENTICATED"}}]}. Introspection is gated; no SDL captured.
+    confidence: high
+
+end_user_authentication:
+  mfa: >-
+    Two-factor authentication and single sign-on are documented for platform
+    users at
+    https://www.botkeeper.com/en/knowledge/two-factor-authentication-and-single-sign-on-sso
+  sso: true
+  sms_otp: true
+  client_side_rate_limits:
+    note: >-
+      The Partner Portal SPA config publishes its own SMS throttles — 59 seconds
+      between token requests, 5 attempts per hour. Client-side only; not an API
+      rate-limit contract.
+
+documentation:
+  developer_auth_page: null
+  api_key_issuance: not documented publicly
+  note: >-
+    There is no public authentication guide, no API key page, and no developer
+    portal. An integrator cannot learn how to authenticate against the User,
+    Bookkeeping or Tasks APIs from anything Botkeeper publishes.
+
+gaps:
+  - No /.well-known/oauth-authorization-server or /.well-known/oauth-protected-resource on any Botkeeper host
+  - The OIDC discovery document is only reachable if you already know the Cognito pool id
+  - No documented scopes beyond the four standard OIDC scopes
+  - No documented token lifetimes, refresh policy, or client registration path
+
+x-evidence:
+  fetched: '2026-08-08'
+  probes:
+    - url: https://cognito-idp.us-east-1.amazonaws.com/us-east-1_MZqyuuurX/.well-known/openid-configuration
+      status: 200
+      content_type: application/json
+    - url: https://cognito-idp.us-east-1.amazonaws.com/us-east-1_MZqyuuurX/.well-known/jwks.json
+      status: 200
+    - url: https://ipa.botkeeper.com/
+      status: 403
+    - url: https://api.firm.ai/graphql
+      status: 500
+    - url: https://www.botkeeper.com/.well-known/openid-configuration
+      status: 404

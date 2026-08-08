@@ -1,0 +1,62 @@
+generated: '2026-08-08'
+method: searched
+source: https://trust.botkeeper.com/
+name: Botkeeper Trust Center
+trust_center:
+  published: true
+  url: https://trust.botkeeper.com/
+  platform: first-party page on botkeeper.com infrastructure (not Vanta/Drata/SafeBase)
+  linked_from:
+    - https://www.botkeeper.com/ (footer, "Security Protocols")
+    - https://www.botkeeper.com/legal
+
+certifications:
+  - name: SOC 2 Type 2
+    status: maintained
+    evidence: >-
+      "Botkeeper Maintains SOC 2 Type 2 Accreditation" — annually renewed, with
+      continuous control testing.
+    url: https://trust.botkeeper.com/
+    report_available: not stated on the public page
+  # No ISO 27001, PCI DSS, HIPAA, FedRAMP, CSA STAR or GDPR certification is
+  # claimed anywhere on the trust center. Absence recorded deliberately.
+
+control_families_published:
+  - name: App Security
+    controls: [penetration testing, code review, secure development lifecycle]
+  - name: Data Security
+    controls: [encryption at rest, SSL/TLS in transit, daily backups]
+  - name: Infrastructure Security
+    controls: [cloud storage restrictions, SSO, automatic patching]
+  - name: Network Security
+    controls: [malware detection, access controls]
+  - name: Organization Security
+    controls: [incident response plan, disaster recovery, security awareness training]
+  - name: Product Security
+    controls: [multi-factor authentication, database monitoring, session locks]
+
+practices:
+  penetration_testing: annual
+  data_residency: AWS data centers in the United States
+  ip_ownership: Botkeeper states it owns its intellectual property
+
+gaps:
+  - No subprocessor list published
+  - No downloadable report / document request flow (SOC 2 report availability not stated)
+  - No DPA linked from the trust center or the legal page
+  - No RFC 9116 security.txt pointing at the trust center or the VDP
+
+related:
+  vulnerability_disclosure: security/botkeeper-vulnerability-disclosure.yml
+  privacy_policy: https://www.botkeeper.com/legal#privacy
+  terms: https://www.botkeeper.com/legal
+
+x-evidence:
+  fetched: '2026-08-08'
+  probes:
+    - url: https://trust.botkeeper.com/
+      status: 200
+      content_type: text/html
+    - url: https://www.botkeeper.com/legal
+      status: 200
+      content_type: text/html; charset=UTF-8

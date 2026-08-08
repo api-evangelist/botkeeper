@@ -1,0 +1,52 @@
+generated: '2026-08-08'
+method: probed
+source: https://cognito-idp.us-east-1.amazonaws.com/us-east-1_MZqyuuurX/.well-known/openid-configuration
+name: Botkeeper OAuth / OIDC scopes
+description: >-
+  The only scopes Botkeeper publishes anywhere are the four standard OpenID
+  Connect scopes advertised by its production Amazon Cognito user pool's
+  discovery document. Botkeeper documents no resource-server scopes, no
+  permission model, and no scope reference page. Nothing below is invented — the
+  list is verbatim from scopes_supported in the discovery document.
+
+authorization_server:
+  issuer: https://cognito-idp.us-east-1.amazonaws.com/us-east-1_MZqyuuurX
+  authorization_endpoint: https://login.auth.firm.ai/oauth2/authorize
+  token_endpoint: https://login.auth.firm.ai/oauth2/token
+  flows: [authorization_code, implicit]
+  response_types_supported: [code, token]
+
+scopes:
+  - name: openid
+    description: Standard OIDC scope — requests an ID token for the authenticated user.
+    standard: true
+  - name: email
+    description: Standard OIDC scope — releases the email and email_verified claims.
+    standard: true
+  - name: phone
+    description: Standard OIDC scope — releases the phone_number and phone_number_verified claims.
+    standard: true
+  - name: profile
+    description: Standard OIDC scope — releases the standard profile claims.
+    standard: true
+
+custom_scopes: []
+
+docs: null
+
+gaps:
+  - >-
+    No resource-server (custom) scopes are advertised. The Botkeeper Partner
+    Platform API on ipa.botkeeper.com is protected by an API Gateway authorizer,
+    but no scope taxonomy for it is published.
+  - No scopes/permissions reference page exists on botkeeper.com.
+  - >-
+    Least-privilege delegation is therefore not expressible against Botkeeper —
+    a third party can only receive whole-user identity, not a scoped grant.
+
+x-evidence:
+  fetched: '2026-08-08'
+  probes:
+    - url: https://cognito-idp.us-east-1.amazonaws.com/us-east-1_MZqyuuurX/.well-known/openid-configuration
+      status: 200
+      content_type: application/json

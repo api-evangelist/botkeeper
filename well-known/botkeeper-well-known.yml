@@ -1,0 +1,158 @@
+generated: '2026-08-08'
+method: probed
+source: https://www.botkeeper.com/.well-known/
+name: Botkeeper well-known index
+description: >-
+  Index of every /.well-known/ path probed across Botkeeper's live hosts on
+  2026-08-08. Botkeeper's own web hosts (botkeeper.com, trust.botkeeper.com,
+  vdp.botkeeper.com) publish nothing under /.well-known/ — the marketing site is
+  a HubSpot CMS that answers every unknown path with a 404 HTML page. The one
+  real discovery document that exists is the OpenID Connect configuration for
+  Botkeeper's production Amazon Cognito user pool, which is AWS-hosted but
+  unambiguously Botkeeper's (its authorization endpoint is a Botkeeper-owned
+  custom domain, login.auth.firm.ai).
+
+hosts_probed:
+  - www.botkeeper.com
+  - botkeeper.com
+  - trust.botkeeper.com
+  - vdp.botkeeper.com
+  - status.botkeeper.com
+  - api.firm.ai
+  - ipa.botkeeper.com
+
+probes:
+  - path: /.well-known/security.txt
+    host: www.botkeeper.com
+    url: https://www.botkeeper.com/.well-known/security.txt
+    status: 404
+    content_type: text/html
+    file: null
+  - path: /.well-known/security.txt
+    host: botkeeper.com
+    url: https://botkeeper.com/.well-known/security.txt
+    status: 404
+    content_type: text/html
+    file: null
+  - path: /security.txt
+    host: www.botkeeper.com
+    url: https://www.botkeeper.com/security.txt
+    status: 404
+    content_type: text/html
+    file: null
+  - path: /.well-known/openid-configuration
+    host: www.botkeeper.com
+    url: https://www.botkeeper.com/.well-known/openid-configuration
+    status: 404
+    content_type: text/html
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    host: www.botkeeper.com
+    url: https://www.botkeeper.com/.well-known/oauth-authorization-server
+    status: 404
+    content_type: text/html
+    file: null
+  - path: /.well-known/api-catalog
+    host: www.botkeeper.com
+    url: https://www.botkeeper.com/.well-known/api-catalog
+    status: 404
+    content_type: text/html
+    file: null
+  - path: /.well-known/ai-plugin.json
+    host: www.botkeeper.com
+    url: https://www.botkeeper.com/.well-known/ai-plugin.json
+    status: 404
+    content_type: text/html
+    file: null
+  - path: /.well-known/agent-card.json
+    host: www.botkeeper.com
+    url: https://www.botkeeper.com/.well-known/agent-card.json
+    status: 404
+    content_type: text/html
+    file: null
+  - path: /.well-known/agent.json
+    host: www.botkeeper.com
+    url: https://www.botkeeper.com/.well-known/agent.json
+    status: 404
+    content_type: text/html
+    file: null
+  - path: /llms.txt
+    host: www.botkeeper.com
+    url: https://www.botkeeper.com/llms.txt
+    status: 404
+    content_type: text/html
+    file: null
+  - path: /.well-known/agent-card.json
+    host: trust.botkeeper.com
+    url: https://trust.botkeeper.com/.well-known/agent-card.json
+    status: 404
+    content_type: text/html
+    file: null
+  - path: /.well-known/agent-card.json
+    host: vdp.botkeeper.com
+    url: https://vdp.botkeeper.com/.well-known/agent-card.json
+    status: 404
+    content_type: text/html
+    file: null
+  - path: /.well-known/agent-card.json
+    host: api.firm.ai
+    url: https://api.firm.ai/.well-known/agent-card.json
+    status: 404
+    content_type: text/html
+    file: null
+  - path: /.well-known/oauth-protected-resource
+    host: api.firm.ai
+    url: https://api.firm.ai/.well-known/oauth-protected-resource
+    status: 404
+    content_type: text/html
+    file: null
+  - path: /.well-known/agent-card.json
+    host: ipa.botkeeper.com
+    url: https://ipa.botkeeper.com/.well-known/agent-card.json
+    status: 403
+    content_type: application/json
+    note: >-
+      AWS API Gateway returns {"message":"Missing Authentication Token"} for
+      every path on this host, including /.well-known/*. A 403 here is the
+      gateway's catch-all, not evidence of a document.
+    file: null
+  - path: /.well-known/openid-configuration
+    host: cognito-idp.us-east-1.amazonaws.com
+    url: https://cognito-idp.us-east-1.amazonaws.com/us-east-1_MZqyuuurX/.well-known/openid-configuration
+    status: 200
+    content_type: application/json
+    file: well-known/botkeeper-openid-configuration.json
+    note: >-
+      OIDC discovery document for Botkeeper's production Cognito user pool
+      (us-east-1_MZqyuuurX), discovered from the published runtime config of the
+      Botkeeper Partner Portal SPA at https://www.firm.ai/. AWS-hosted, but
+      Botkeeper's pool — the authorization/token/userinfo endpoints all resolve
+      to login.auth.firm.ai, a Botkeeper-owned custom domain.
+  - path: /.well-known/jwks.json
+    host: cognito-idp.us-east-1.amazonaws.com
+    url: https://cognito-idp.us-east-1.amazonaws.com/us-east-1_MZqyuuurX/.well-known/jwks.json
+    status: 200
+    content_type: application/json
+    file: null
+    note: Live JWKS for the same pool. Not saved — rotating key material.
+
+false_positives_rejected:
+  - url: https://status.botkeeper.com/.well-known/security.txt
+    status: 200
+    content_type: text/plain
+    reason: >-
+      Returns 200 with a valid RFC 9116 security.txt, but the document is
+      ATLASSIAN'S (Contact: security@atlassian.com, Canonical:
+      https://www.atlassian.com/.well-known/security.txt) — status.botkeeper.com
+      is a hosted Atlassian Statuspage. Botkeeper's own VDP page explicitly
+      excludes status.botkeeper.com from its disclosure scope as a "third-party
+      hosted domain". NOT credited to Botkeeper.
+
+summary:
+  security_txt: false
+  openid_configuration: true
+  oauth_authorization_server: false
+  api_catalog: false
+  ai_plugin: false
+  agent_card: false
+  llms_txt: false

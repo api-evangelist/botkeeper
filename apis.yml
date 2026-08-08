@@ -1,7 +1,19 @@
 aid: botkeeper
 name: Botkeeper
-description: 'Botkeeper is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: >-
+  Botkeeper is an AI-powered accounting automation platform built specifically for
+  accounting firms. Founded in 2015 and headquartered in Boston, the company's
+  Botkeeper Infinite product combines machine learning with optional skilled
+  accountants to automate bookkeeping at practice scale: Smart Connect pulls
+  read-only bank and credit-card transactions and statements from thousands of
+  financial institutions, Transaction Manager and Auto Bank Rec categorize and
+  reconcile them against QuickBooks Online, QuickBooks Desktop and Xero, and
+  Documents, Work, Close Tracker, JE Automation and Firm Insights carry the
+  surrounding practice workflow. Botkeeper operates APIs — its own status page
+  lists a User API, a Bookkeeping API and a Tasks API — and ships a first-party
+  Zapier app, but it publishes no developer portal, no API reference and no
+  machine-readable specification of any kind.
+image: https://www.botkeeper.com/hubfs/creative-and-content/Style-and-branding-guidelines/Botkeeper-logo-blue-brand.png
 url: https://raw.githubusercontent.com/api-evangelist/botkeeper/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
@@ -12,7 +24,52 @@ created: '2026-08-08'
 modified: '2026-08-08'
 tags:
 - Company
-apis: []
+- Accounting
+- Bookkeeping
+- Financial Services
+- Artificial Intelligence
+- Automation
+- SaaS
+- Banking Data
+- Practice Management
+- Small Business
+apis:
+- name: Botkeeper Platform API
+  description: >-
+    Botkeeper's partner platform API. The company does not publish a reference,
+    a portal or a specification for it; the only public evidence of its shape is
+    Botkeeper's own status page, which lists three first-party components under
+    "Application Programming Interface (APIs)" — User API, Bookkeeping API and
+    Tasks API — and the first-party Zapier app, which exposes eight operations
+    across clients, tasks, users and documents. The production host is an AWS API
+    Gateway that answers every unauthenticated request with
+    {"message":"Missing Authentication Token"}; authentication is Amazon Cognito
+    OIDC. Recorded here from probed evidence only.
+  humanURL: https://status.botkeeper.com/
+  baseURL: https://ipa.botkeeper.com
+  tags:
+  - Accounting
+  - Bookkeeping
+  - Tasks
+  - Users
+  properties:
+  - type: Authentication
+    url: authentication/botkeeper-authentication.yml
+  - type: OAuthScopes
+    url: scopes/botkeeper-scopes.yml
+  x-evidence:
+    fetched: '2026-08-08'
+    probes:
+    - url: https://ipa.botkeeper.com/
+      status: 403
+      body: '{"message":"Missing Authentication Token"}'
+    - url: https://status.botkeeper.com/api/v2/components.json
+      status: 200
+    - url: https://zapier.com/apps/botkeeper/integrations
+      status: 200
+    - url: https://api.botkeeper.com/
+      status: 0
+      note: dangling CNAME to a retired Elastic Beanstalk environment; does not resolve
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -20,4 +77,86 @@ maintainers:
   email: info@apis.io
 common:
 - type: Website
+  url: https://www.botkeeper.com/
+- type: Documentation
+  url: https://www.botkeeper.com/knowledge
+- type: GettingStarted
+  url: https://www.botkeeper.com/en/knowledge/quickstart-guide
+- type: Support
+  url: https://www.botkeeper.com/onboarding-and-support
+- type: Blog
+  url: https://www.botkeeper.com/blog
+- type: BlogRSS
+  url: https://www.botkeeper.com/blog/rss.xml
+- type: GitHubOrganization
+  url: https://github.com/botkeeper
+- type: Pricing
+  url: https://www.botkeeper.com/pricing
+- type: SignUp
+  url: https://www.botkeeper.com/get-started
+- type: TermsOfService
+  url: https://www.botkeeper.com/legal
+- type: PrivacyPolicy
+  url: https://www.botkeeper.com/legal#privacy
+- type: StatusPage
+  url: lifecycle/botkeeper-lifecycle.yml
+- type: Lifecycle
+  url: lifecycle/botkeeper-lifecycle.yml
+- type: ChangeLog
+  url: changelog/botkeeper-changelog.yml
+- type: Security
+  url: security/botkeeper-vulnerability-disclosure.yml
+- type: VulnerabilityDisclosure
+  url: security/botkeeper-vulnerability-disclosure.yml
+- type: TrustCenter
+  url: security/botkeeper-trust-center.yml
+- type: Compliance
+  url: security/botkeeper-trust-center.yml
+- type: Conformance
+  url: conformance/botkeeper-conformance.yml
+- type: DomainSecurity
+  url: security/botkeeper-domain-security.yml
+- type: Authentication
+  url: authentication/botkeeper-authentication.yml
+- type: OAuthScopes
+  url: scopes/botkeeper-scopes.yml
+- type: WellKnown
+  url: well-known/botkeeper-well-known.yml
+- type: OpenIDConnect
+  url: well-known/botkeeper-openid-configuration.json
+- type: Packages
+  url: packages/botkeeper-packages.yml
+- type: Integrations
+  url: integrations/botkeeper-zapier.yml
+- type: LLMsTxt
+  url: llms/botkeeper-llms.txt
+- type: SecondaryMarket
   url: https://forgeglobal.com/botkeeper_stock/
+x-enrichment:
+  date: '2026-08-08'
+  status: enriched
+  artifacts_added: 13
+  pass: local-v1
+x-coverage:
+  state: covered
+  reason: covered
+  detail: >-
+    Twelve real artifacts were captured from Botkeeper's own surface — trust
+    center, vulnerability disclosure policy, Statuspage components, release
+    notes, Zapier operation catalogue and a live OpenID Connect discovery
+    document — but no machine-readable API contract exists: Botkeeper names a
+    User API, Bookkeeping API and Tasks API on its status page while publishing
+    no developer portal or reference, and its historical api.botkeeper.com host
+    is now a dangling CNAME to a retired Elastic Beanstalk environment.
+  evidence:
+  - url: https://status.botkeeper.com/api/v2/components.json
+    status: 200
+  - url: https://cognito-idp.us-east-1.amazonaws.com/us-east-1_MZqyuuurX/.well-known/openid-configuration
+    status: 200
+  - url: https://vdp.botkeeper.com/
+    status: 200
+  - url: https://ipa.botkeeper.com/
+    status: 403
+  - url: https://www.botkeeper.com/openapi.json
+    status: 404
+  checked: '2026-08-08'

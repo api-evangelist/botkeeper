@@ -1,0 +1,132 @@
+generated: '2026-08-08'
+method: searched
+source: https://status.botkeeper.com/
+name: Botkeeper API lifecycle and operational posture
+
+status_page:
+  published: true
+  url: https://status.botkeeper.com/
+  platform: Atlassian Statuspage
+  page_id: gs2g8c7kp4py
+  machine_readable:
+    - url: https://status.botkeeper.com/api/v2/summary.json
+      status: 200
+      format: statuspage-v2-json
+    - url: https://status.botkeeper.com/api/v2/components.json
+      status: 200
+      format: statuspage-v2-json
+    - url: https://status.botkeeper.com/history.rss
+      status: 200
+      format: rss
+    - url: https://status.botkeeper.com/history.atom
+      format: atom
+  component_groups:
+    - group: Application Programming Interface (APIs)
+      components: [User API, Bookkeeping API, Tasks API]
+    - group: Platform Features
+      components:
+        - Smart Connect
+        - Password Manager
+        - Transaction Manager
+        - Scoping Tool
+    - group: Third Party Vendors
+      components: [AWS Server, Finicity]
+    - group: Accounting Software
+      components:
+        - QuickBooks Online
+        - Xero Ltd - API Accounting API
+        - Xero Ltd - API Payroll API
+        - Xero Ltd - API Files API
+        - Xero Ltd - API Bankfeeds API
+        - Xero Ltd - API Xero HQ API
+        - Xero Ltd - API Assets API
+        - Xero Ltd - API Xero Practice Manager API
+    - group: Databases
+      components: [MongoDB, Vault, Snowflake]
+    - ungrouped: [Partner Platform]
+  note: >-
+    The status page is the ONLY public Botkeeper surface that names the company's
+    APIs. Three are listed as first-party components — User API, Bookkeeping API
+    and Tasks API — all reported operational. There is no public reference,
+    portal or specification for any of them.
+
+versioning:
+  scheme: none published
+  api_versioning: not documented publicly
+  release_cadence: irregular, dated product releases (see changelog/botkeeper-changelog.yml)
+
+deprecation:
+  policy_published: false
+  sunset_header: not documented
+  deprecation_header: not documented
+  rfc_8594: false
+  note: >-
+    No deprecation or sunset policy is published anywhere on botkeeper.com. No
+    Deprecation pointer is emitted for this provider.
+
+sla:
+  published: false
+  note: >-
+    No public SLA or uptime commitment. The status page shows 100% uptime across
+    all components for the trailing 90 days as of 2026-08-08, but that is a
+    report, not a commitment.
+
+dead_hosts:
+  - host: api.botkeeper.com
+    dns: CNAME -> botkeeper-alb.tryxctyhck.us-east-1.elasticbeanstalk.com
+    resolves: false
+    note: >-
+      DANGLING CNAME. api.botkeeper.com points at an AWS Elastic Beanstalk
+      environment that no longer exists, so the name does not resolve at all
+      (NXDOMAIN on the target). Any historical integration pointed at
+      api.botkeeper.com is dead. This is also a subdomain-takeover exposure worth
+      flagging to Botkeeper — the record should be removed.
+  - host: auth.botkeeper.com
+    dns: CNAME -> k8s-ingressn-ingressn-88ae3445f2-975564632.us-west-2.elb.amazonaws.com
+    resolves: false
+    note: Dangling CNAME to a retired Kubernetes ingress ELB.
+  - host: app.botkeeper.com
+    dns: no record
+    resolves: false
+  - host: portal.botkeeper.com
+    dns: no record
+    resolves: false
+
+live_api_hosts:
+  - host: ipa.botkeeper.com
+    url: https://ipa.botkeeper.com/
+    status: 403
+    body: '{"message":"Missing Authentication Token"}'
+    stack: AWS API Gateway behind CloudFront
+    note: >-
+      The Botkeeper Partner Portal API. Every path returns the API Gateway 403
+      catch-all without credentials. Discovered from the published runtime config
+      of the Partner Portal SPA (https://www.firm.ai/).
+  - host: api.firm.ai
+    url: https://api.firm.ai/
+    status: 200
+    body: '{"active":false}'
+    graphql:
+      url: https://api.firm.ai/graphql
+      status: 500
+      body: '{"errors":[{"message":"Must be logged in","extensions":{"code":"UNAUTHENTICATED"}}]}'
+      note: >-
+        Apollo GraphQL server. Introspection is auth-gated — no SDL was captured
+        and none was fabricated. CNAMEs to api.reachreporting.com; Reach
+        Reporting is embedded in Botkeeper Infinite.
+  - host: api.firm.ai/health
+    url: https://api.firm.ai/health
+    status: 200
+    body: '{"status":"ok","service":"core-api","version":"26feb35","commitSha":"26feb35"}'
+
+x-evidence:
+  fetched: '2026-08-08'
+  probes:
+    - url: https://status.botkeeper.com/
+      status: 200
+    - url: https://status.botkeeper.com/api/v2/components.json
+      status: 200
+    - url: https://ipa.botkeeper.com/
+      status: 403
+    - url: https://api.firm.ai/health
+      status: 200

@@ -1,0 +1,110 @@
+generated: '2026-08-08'
+method: searched
+source: https://trust.botkeeper.com/
+name: Botkeeper standards and compliance conformance
+description: >-
+  What Botkeeper conforms to, as evidenced by what it actually publishes. Because
+  Botkeeper ships no machine-readable API contract, most technical conformance
+  claims cannot be asserted either way and are recorded as unknown rather than
+  as failures.
+
+standards:
+  - id: soc2-type-2
+    name: SOC 2 Type 2
+    conforms: true
+    evidence: >-
+      "Botkeeper Maintains SOC 2 Type 2 Accreditation", annually renewed with
+      continuous control testing, published at https://trust.botkeeper.com/
+    url: https://trust.botkeeper.com/
+  - id: oidc
+    name: OpenID Connect Discovery 1.0
+    conforms: true
+    evidence: >-
+      A valid OIDC discovery document is served for Botkeeper's production
+      Cognito user pool (issuer, jwks_uri, authorization/token/userinfo/revocation
+      endpoints, scopes_supported).
+    url: https://cognito-idp.us-east-1.amazonaws.com/us-east-1_MZqyuuurX/.well-known/openid-configuration
+  - id: oauth2
+    name: OAuth 2.0
+    conforms: true
+    evidence: >-
+      Authorization-code and implicit response types with client_secret_basic /
+      client_secret_post token endpoint auth, per the discovery document.
+    url: https://login.auth.firm.ai/oauth2/authorize
+  - id: rfc9116
+    name: RFC 9116 security.txt
+    conforms: false
+    evidence: >-
+      404 at https://www.botkeeper.com/.well-known/security.txt and
+      https://botkeeper.com/.well-known/security.txt. A full vulnerability
+      disclosure policy exists at https://vdp.botkeeper.com/ but is not
+      machine-discoverable.
+  - id: rfc8594
+    name: RFC 8594 Sunset header / deprecation signalling
+    conforms: false
+    evidence: No deprecation or sunset policy is published on any Botkeeper surface.
+  - id: openapi
+    name: OpenAPI
+    conforms: false
+    evidence: >-
+      No OpenAPI or Swagger document at any probed location on botkeeper.com,
+      ipa.botkeeper.com, api.firm.ai or firm.ai. See x-coverage in apis.yml.
+  - id: asyncapi
+    name: AsyncAPI
+    conforms: false
+    evidence: No event or streaming specification is published.
+  - id: rfc9457
+    name: RFC 9457 Problem Details for HTTP APIs
+    conforms: unknown
+    evidence: >-
+      Error envelopes could not be observed — every API surface returns a
+      platform-level auth challenge (API Gateway 403, Apollo UNAUTHENTICATED)
+      before any application error is reachable.
+  - id: a2a
+    name: A2A Agent Card
+    conforms: false
+    evidence: >-
+      404 at /.well-known/agent-card.json and /.well-known/agent.json on every
+      live Botkeeper and firm.ai host.
+  - id: mcp
+    name: Model Context Protocol
+    conforms: false
+    evidence: No hosted or published MCP server was found for Botkeeper.
+  - id: llmstxt
+    name: llms.txt
+    conforms: false
+    evidence: 404 at https://www.botkeeper.com/llms.txt
+
+compliance_programs:
+  - name: SOC 2 Type 2
+    published: true
+    url: https://trust.botkeeper.com/
+not_claimed:
+  - ISO/IEC 27001
+  - PCI DSS
+  - HIPAA
+  - FedRAMP
+  - CSA STAR
+  - GDPR certification
+
+data_aggregation_partners:
+  note: >-
+    Botkeeper's Smart Connect bank-data surface is built on regulated
+    aggregators. Finicity is named as a monitored third-party vendor on the
+    status page; Botkeeper's marketing describes Mastercard Data
+    Connect-certified institution coverage. Open Banking / FDX conformance is
+    inherited from those partners, not asserted by Botkeeper.
+
+x-evidence:
+  fetched: '2026-08-08'
+  probes:
+    - url: https://trust.botkeeper.com/
+      status: 200
+    - url: https://cognito-idp.us-east-1.amazonaws.com/us-east-1_MZqyuuurX/.well-known/openid-configuration
+      status: 200
+    - url: https://www.botkeeper.com/.well-known/security.txt
+      status: 404
+    - url: https://www.botkeeper.com/llms.txt
+      status: 404
+    - url: https://www.botkeeper.com/.well-known/agent-card.json
+      status: 404
