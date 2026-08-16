@@ -1,0 +1,21 @@
+{
+  "repo": "botkeeper",
+  "feeds": [
+    {
+      "source": "https://www.botkeeper.com/onboarding-and-support",
+      "feed_url": "https://www.botkeeper.com/onboarding-and-support",
+      "title": "",
+      "saved": 0,
+      "method": "none"
+    },
+    {
+      "source": "https://www.botkeeper.com/blog",
+      "feed_url": "https://www.botkeeper.com/blog/rss.xml",
+      "title": "",
+      "saved": 1,
+      "method": "discovered"
+    }
+  ],
+  "post_count": 1,
+  "fetched": "2026-08-15T12:22:01Z"
+}
