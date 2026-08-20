@@ -26,6 +26,17 @@ tags:
 - Company
 - Accounting
 - Bookkeeping
+- Financial-Services
+- Artificial Intelligence
+- Automation
+- Software-as-a-Service
+- Banking Data
+- Practice Management
+- Small Business
+tags_raw:
+- Company
+- Accounting
+- Bookkeeping
 - Financial Services
 - Artificial Intelligence
 - Automation
@@ -48,6 +59,11 @@ apis:
   humanURL: https://status.botkeeper.com/
   baseURL: https://ipa.botkeeper.com
   tags:
+  - Accounting
+  - Bookkeeping
+  - Task
+  - User
+  tags_raw:
   - Accounting
   - Bookkeeping
   - Tasks
