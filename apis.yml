@@ -13,6 +13,17 @@ description: >-
   lists a User API, a Bookkeeping API and a Tasks API — and ships a first-party
   Zapier app, but it publishes no developer portal, no API reference and no
   machine-readable specification of any kind.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://www.botkeeper.com/hubfs/creative-and-content/Style-and-branding-guidelines/Botkeeper-logo-blue-brand.png
 url: https://raw.githubusercontent.com/api-evangelist/botkeeper/refs/heads/main/apis.yml
 x-type: company
