@@ -51,7 +51,7 @@ tags:
 - Company
 - Accounting
 - Bookkeeping
-- Financial-Services
+- Financial Services
 - Artificial Intelligence
 - Automation
 - Software-as-a-Service
@@ -69,6 +69,7 @@ tags_raw:
 - Banking Data
 - Practice Management
 - Small Business
+- Financial-Services
 apis:
 - name: Botkeeper Platform API
   description: >-
