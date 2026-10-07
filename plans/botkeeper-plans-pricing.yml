@@ -1,0 +1,79 @@
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-10-07'
+method: searched
+source: https://www.botkeeper.com/pricing
+sources:
+- https://www.botkeeper.com/pricing
+provenance:
+  tool: all/0-working/economics/harvest_pricing.py
+  run: 20261007T104522
+  grounding: every price_text was found verbatim in the fetched page text
+audience: business-product
+pricing_basis: per-seat
+delivery:
+  delivery: managed
+  method: page
+  read: '2026-10-07'
+  managed_tier: 1 - 4 Licenses
+published: true
+note: Per-entity-license pricing for accounting firms, tiered by license count, with annual (10-25% discount)
+  and monthly options. 1 license = 1 client. No free trial.
+plan_count: 8
+currency: USD
+plans:
+- name: 1 - 4 Licenses
+  price_text: $134
+  price: 134
+  currency: USD
+  period: month
+  unit: per license/mo
+  included_quota: Billed Annually (Save 10%)
+- name: 1 - 4 Licenses (monthly)
+  price_text: $149
+  price: 149
+  currency: USD
+  period: month
+  unit: per license/mo
+  included_quota: Billed Monthly
+- name: 5 - 9 Licenses
+  price_text: $98
+  price: 98
+  currency: USD
+  period: month
+  unit: per license/mo
+  included_quota: Billed Annually (Save 10%)
+- name: 5 - 9 Licenses (monthly)
+  price_text: $109
+  price: 109
+  currency: USD
+  period: month
+  unit: per license/mo
+  included_quota: Billed Monthly
+- name: 10 - 24 Licenses
+  price_text: $71
+  price: 71
+  currency: USD
+  period: month
+  unit: per license/mo
+  included_quota: Most Popular; Billed Annually
+- name: 10 - 24 Licenses (monthly)
+  price_text: $79
+  price: 79
+  currency: USD
+  period: month
+  unit: per license/mo
+  included_quota: Billed Monthly
+- name: 25+ Licenses
+  price_text: $53
+  price: 53
+  currency: USD
+  period: month
+  unit: per license/mo
+  included_quota: Save an Additional 25%; Billed Annually
+- name: 25+ Licenses (monthly)
+  price_text: $59
+  price: 59
+  currency: USD
+  period: month
+  unit: per license/mo
+  included_quota: Billed Monthly
