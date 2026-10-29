@@ -64,5 +64,109 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Botkeeper is a company surfaced via the API Evangelist harvest backlog (source: secondary-market) and added to the network as a stub for full-pipeline profiling.
-- https://forgeglobal.com/botkeeper_stock/
+Botkeeper is an AI-powered accounting automation platform built specifically for accounting firms. Founded in 2015 and headquartered in Boston, the company's Botkeeper Infinite product combines machine learning with optional skilled accountants to automate bookkeeping at practice scale: Smart Connect pulls read-only bank and credit-card transactions and statements from thousands of financial institutions, Transaction Manager and Auto Bank Rec categorize and reconcile them against QuickBooks Online, QuickBooks Desktop and Xero, and Documents, Work, Close Tracker, JE Automation and Firm Insights carry the surrounding practice workflow. Botkeeper operates APIs — its own status page lists a User API, a Bookkeeping API and a Tasks API — and ships a first-party Zapier app, but it publishes no developer portal, no API reference and no machine-readable specification of any kind.
+
+**Areas:** Company · Accounting · Bookkeeping · Financial Services · Artificial Intelligence · Automation · Software-as-a-Service · Banking Data · Practice Management · Small Business
+
+## Botkeeper on APIs.io
+
+Everything profiled for Botkeeper is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/botkeeper/](https://apis.io/providers/botkeeper/)** — or go straight to one of the APIs or properties below.
+
+### APIs (1)
+
+- [Botkeeper Platform API](https://apis.io/apis/botkeeper/botkeeper-platform-api/) — Botkeeper's partner platform API. The company does not publish a reference, a portal or a specification for it; the only public evidence of its shape is…
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### Security (4)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Botkeeper Authentication](https://apis.io/security/botkeeper/botkeeper-authentication/)
+- [Botkeeper Domain Security](https://apis.io/security/botkeeper/botkeeper-domain-security/)
+- [Botkeeper Trust Center](https://apis.io/security/botkeeper/botkeeper-trust-center/)
+- [Botkeeper Vulnerability Disclosure](https://apis.io/security/botkeeper/botkeeper-vulnerability-disclosure/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Botkeeper Scopes](https://apis.io/scopes/botkeeper/botkeeper-scopes/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Botkeeper Plans Pricing](https://apis.io/plans/botkeeper/botkeeper-plans-pricing/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.botkeeper.com/)
+- [Documentation](https://www.botkeeper.com/knowledge)
+- [Getting started](https://www.botkeeper.com/en/knowledge/quickstart-guide)
+- [Pricing](https://www.botkeeper.com/pricing)
+- [Sign up](https://www.botkeeper.com/get-started)
+- [Support](https://www.botkeeper.com/onboarding-and-support)
+- [Blog](https://www.botkeeper.com/blog)
+- [Terms of service](https://www.botkeeper.com/legal)
+- [Privacy policy](https://www.botkeeper.com/legal#privacy)
+- [GitHub](https://github.com/botkeeper)
+
+## API Evangelist rating
+
+**Kin Score 44.7** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 0.0 |
+| Contract governance | 18.2 |
+| Operational transparency | 44.7 |
+| Developer ergonomics | 40.5 |
+| Access clarity | 92.1 |
+
+**Agent readiness 2.5** — human-only
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | na |
+
+**Regulatory alignment 39.3** — Banking & Open Finance
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/botkeeper/](https://apis.io/providers/botkeeper/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Botkeeper: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/botkeeper/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
